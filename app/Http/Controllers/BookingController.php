@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use App\Models\Channel;
+use App\Models\RatePlan;
+use App\Models\Room;
 
 class BookingController extends Controller
 {
@@ -16,7 +19,10 @@ class BookingController extends Controller
     {
         $bookings = Booking::all();
 
-        return view('bookings.index', compact('bookings'));
+        return view('bookings.index', 
+        [
+            'bookings' => $bookings
+        ]);
     }
 
     /**
@@ -24,9 +30,19 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('bookings.create');
+        $channels = Channel::all();
+        $ratePlans = RatePlan::all();
+        $rooms = Room::all();
+        
+        return view('bookings.create', 
+        [
+            'channels' => $channels,
+            'ratePlans' => $ratePlans,
+            'rooms' => $rooms,
+            'request' => $request
+        ]);
     }
 
     /**
@@ -37,7 +53,40 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'channel' => 'required',
+            'room' => 'required',
+            'ratePlan' => 'required',
+            'comment' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'contactMobile' => 'required',
+            'contactEmail' => 'required',
+        ]);
+
+        // dd($request->channel);
+
+        Booking::create([
+            'no_of_rooms' => $request->noOfRooms,
+            // 'check_in' => $request->checkin,
+            // 'check_out' => $request->checkout,
+            'no_of_adults' => $request->noOfAdults,
+            'no_of_children' => $request->noOfChildren,
+            // 'booking_date' => $request->bookingDate,
+            'first_name' => $request->firstName,
+            'last_name' => $request->lastName,
+            'contact_mobile' => $request->contactMobile,
+            'contact_email' => $request->contactEmail,
+            'total_amount' => $request->totalAmount,
+            'comment' => $request->comment,
+            'channel_id' => $request->channel,
+            'room_id' => $request->room,
+            'rate_plan_id' => $request->ratePlan,
+        ]);
+
+        return redirect()->route('bookings.index');
+
+
     }
 
     /**

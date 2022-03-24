@@ -9,6 +9,10 @@ class RatePlan extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
     public function booking()
     {
         return $this->hasMany(Booking::class);

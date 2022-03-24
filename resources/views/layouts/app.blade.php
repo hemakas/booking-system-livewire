@@ -41,8 +41,13 @@
             </main>
         </div>
 
+        
+
         @stack('modals')
 
         @livewireScripts
+
+        {{-- tailwind elements plugin --}}
+        <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
     </body>
 </html>

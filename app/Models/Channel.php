@@ -9,7 +9,11 @@ class Channel extends Model
 {
     use HasFactory;
 
-    public function booking()
+    protected $fillable = [
+        'name'
+    ];
+
+    public function bookings()
     {
         return $this->hasMany(Booking::class);
     }

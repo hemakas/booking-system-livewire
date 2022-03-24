@@ -100,19 +100,20 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach ($bookings as $booking)
                             <tr class="bg-gray-50 text-center">
                                 <td class="p-2 border-r">
                                     {{ $booking->id }}
                                 </td>
                                 <td class="p-2 border-r">
-                                    {{ $booking->channel()->name }}
+                                    {{ $booking->channel->name ?? '(n/a)'}}
                                 </td>
                                 <td class="p-2 border-r">
-                                    {{ $booking->room()->name }}
+                                    {{ $booking->room->name ?? '(n/a)'}}
                                 </td>
                                 <td class="p-2 border-r">
-                                    {{ $booking->ratePlan()->name }}
+                                    {{ $booking->ratePlan->name ?? '(n/a)' }}
                                 </td>
                                 <td class="p-2 border-r">
                                     {{ $booking->no_of_rooms }}
