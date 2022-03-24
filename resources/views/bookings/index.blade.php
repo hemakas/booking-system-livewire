@@ -149,13 +149,12 @@
                                     {{ $booking->comment }}
                                 </td>
                                 <td class="p-2 border-r">
-                                    buttons
+                                    <form action="{{ route('bookings.destroy', $booking) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-blue-500">Delete</button>
+                                    </form>
                                 </td>
-                                {{-- <form action="{{ route('tasks.destroy', $tasks->id) }}">
-                                    <input type="hidden" name="_method" value="_DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                </form> --}}
                             </tr>
                         @endforeach
                         

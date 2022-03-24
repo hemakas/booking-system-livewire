@@ -88,8 +88,11 @@ class BookingController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Booking $booking)
     {
-        //
+        
+        $booking->delete();
+
+        return back();
     }
 }
