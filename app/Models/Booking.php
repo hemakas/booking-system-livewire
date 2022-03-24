@@ -24,7 +24,9 @@ class Booking extends Model
         'contact_email',
         'total_amount',
         'comment',
-        // 'channel_id',
+        'channel_id',
+        'room_id',
+        'rate_plan_id'
     ];
 
     public function channel()
