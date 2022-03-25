@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\Channel;
 use App\Models\RatePlan;
 use App\Models\Room;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -49,13 +50,18 @@ class BookingController extends Controller
             'contactEmail' => 'required',
         ]);
 
+        $bookingDate = Carbon::createFromFormat('m/d/Y', $request->bookingDate)->format('Y-m-d');
+        $checkIn = Carbon::createFromFormat('m/d/Y', $request->checkIn)->format('Y-m-d');
+        $checkOut = Carbon::createFromFormat('m/d/Y', $request->checkOut)->format('Y-m-d');
+
+
         Booking::create([
             'no_of_rooms' => $request->noOfRooms,
-            'check_in' => $request->checkin,
-            'check_out' => $request->checkout,
+            'check_in' => $checkIn,
+            'check_out' => $checkOut,
             'no_of_adults' => $request->noOfAdults,
             'no_of_children' => $request->noOfChildren,
-            'booking_date' => $request->bookingDate,
+            'booking_date' => $bookingDate,
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
             'contact_mobile' => $request->contactMobile,
