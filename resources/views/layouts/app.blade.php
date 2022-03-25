@@ -13,6 +13,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        {{-- flowbite  --}}
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" />
+
         @livewireStyles
 
         <!-- Scripts -->
@@ -47,7 +50,11 @@
 
         @livewireScripts
 
-        {{-- tailwind elements plugin --}}
-        <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
+        {{-- flowbite tailwind library --}}
+        <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+
+        {{-- flowbite datepicker --}}
+        <script src="https://unpkg.com/flowbite@1.4.1/dist/datepicker.js"></script>
+
     </body>
 </html>
