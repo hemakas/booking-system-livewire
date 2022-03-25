@@ -122,22 +122,34 @@
                 </div>
               </div>
 
-              {{-- contactMobile --}}
-              <div class="mb-6">
-                <label for="contactMobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact Mobile</label>
-                <input type="text" name="contactMobile" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="0714445556" value="{{ $booking->contact_mobile }}">
-                {{-- contactMobile error --}}
-                @error('contactMobile')
-                  <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
+              <div class="grid grid-cols-3 mb-6 gap-2">
+                {{-- contactMobile --}}
+                <div>
+                  <label for="contactMobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact Mobile</label>
+                  <input type="text" name="contactMobile" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="0714445556" value="{{ $booking->contact_mobile }}">
+                  {{-- contactMobile error --}}
+                  @error('contactMobile')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                  @enderror
+                </div>
+
+                {{-- contactEmail --}}
+                <div class="col-span-2">
+                  <label for="contactEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact Email</label>
+                  <input type="email" name="contactEmail" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@example.com" value="{{ $booking->contact_email }}">
+                  {{-- contactEmail error --}}
+                  @error('contactEmail')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                  @enderror
+                </div>
               </div>
 
-              {{-- contactEmail --}}
+              {{-- bookingDate --}}
               <div class="mb-6">
-                <label for="contactEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact Email</label>
-                <input type="email" name="contactEmail" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@example.com" value="{{ $booking->contact_email }}">
-                {{-- contactEmail error --}}
-                @error('contactEmail')
+                <label for="bookingDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Booking Date</label>
+                <input datepicker type="text" name="bookingDate" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" value="{{ $booking->booking_date }}">
+                {{-- bookingDate error --}}
+                @error('bookingDate')
                   <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
               </div>

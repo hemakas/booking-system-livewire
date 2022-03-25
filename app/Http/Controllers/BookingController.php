@@ -51,11 +51,11 @@ class BookingController extends Controller
 
         Booking::create([
             'no_of_rooms' => $request->noOfRooms,
-            // 'check_in' => $request->checkin,
-            // 'check_out' => $request->checkout,
+            'check_in' => $request->checkin,
+            'check_out' => $request->checkout,
             'no_of_adults' => $request->noOfAdults,
             'no_of_children' => $request->noOfChildren,
-            // 'booking_date' => $request->bookingDate,
+            'booking_date' => $request->bookingDate,
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
             'contact_mobile' => $request->contactMobile,
