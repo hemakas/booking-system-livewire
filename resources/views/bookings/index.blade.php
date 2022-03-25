@@ -149,10 +149,18 @@
                                     {{ $booking->comment }}
                                 </td>
                                 <td class="p-2 border-r">
+                                    {{-- edit link --}}
+                                    <form action="{{ route('bookings.edit', $booking->id) }}" method="post">
+                                        @csrf
+                                        @method('GET')
+                                        <button type="submit" class="text-blue-500">Edit</button>
+                                    </form>
+
+                                    {{-- delete link --}}
                                     <form action="{{ route('bookings.destroy', $booking) }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-blue-500">Delete</button>
+                                        <button type="submit" class="text-red-500">Delete</button>
                                     </form>
                                 </td>
                             </tr>
