@@ -22,6 +22,7 @@ class BookingController extends Controller
         ]);
     }
 
+
     public function create(Request $request)
     {
         $channels = Channel::all();
@@ -37,6 +38,7 @@ class BookingController extends Controller
         ]);
     }
 
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -50,18 +52,13 @@ class BookingController extends Controller
             'contactEmail' => 'required',
         ]);
 
-        $bookingDate = Carbon::createFromFormat('m/d/Y', $request->bookingDate)->format('Y-m-d');
-        $checkIn = Carbon::createFromFormat('m/d/Y', $request->checkIn)->format('Y-m-d');
-        $checkOut = Carbon::createFromFormat('m/d/Y', $request->checkOut)->format('Y-m-d');
-
-
         Booking::create([
             'no_of_rooms' => $request->noOfRooms,
-            'check_in' => $checkIn,
-            'check_out' => $checkOut,
+            'check_in' => $booking->setDateAttr($request->checkIn),
+            'check_out' => $booking->setDateAttr($request->checkOut),
             'no_of_adults' => $request->noOfAdults,
             'no_of_children' => $request->noOfChildren,
-            'booking_date' => $bookingDate,
+            'booking_date' => $booking->setDateAttr($request->bookingDate),
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
             'contact_mobile' => $request->contactMobile,
@@ -82,6 +79,7 @@ class BookingController extends Controller
         //
     }
 
+    
     public function edit($id)
     {
         $booking = Booking::find($id);
@@ -115,11 +113,11 @@ class BookingController extends Controller
         $booking = Booking::find($id);
 
         $booking->no_of_rooms = $request->noOfRooms;
-        // $booking->check_in = $request->checkin;
-        // $booking->check_out = $request->checkout;
+        $booking->check_in = $booking->setDateAttr($request->checkIn);
+        $booking->check_out = $booking->setDateAttr($request->checkOut);
         $booking->no_of_adults = $request->noOfAdults;
         $booking->no_of_children = $request->noOfChildren;
-        // $booking->booking_date = $request->bookingDate;
+        $booking->booking_date = $booking->setDateAttr($request->bookingDate);
         $booking->first_name = $request->firstName;
         $booking->last_name = $request->lastName;
         $booking->contact_mobile = $request->contactMobile;
@@ -132,7 +130,7 @@ class BookingController extends Controller
 
         $booking->update();
 
-        return redirect()->route('bookings.index')->with('status','Booking Updated Successfully');;
+        return redirect()->route('bookings.index')->with('status','Booking Updated Successfully');
 
     }
 

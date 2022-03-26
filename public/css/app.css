@@ -3993,11 +3993,11 @@ textarea.form-control.is-invalid {
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
-.col-span-3 {
-  grid-column: span 3 / span 3;
-}
 .col-span-2 {
   grid-column: span 2 / span 2;
+}
+.col-span-3 {
+  grid-column: span 3 / span 3;
 }
 .mx-auto {
   margin-left: auto;

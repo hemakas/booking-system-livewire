@@ -43,13 +43,36 @@ class Booking extends Model
         return $this->belongsTo(Room::class);
     }
 
-    public function setBookingDateAttr($val)
+    public function setDateAttr($val)
     {
-        $this->attributes['booking_date'] = Carbon::createFromFormat('m/d/Y', $val)->format('Y-m-d');
+        return Carbon::createFromFormat('m/d/Y', $val)->format('Y-m-d');
     }
 
+    public function getCheckInAttr()
+    {
+        if($this->attributes['check_in']) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['check_in'])->format('m/d/Y');
+        } else {
+            return Carbon::today()->format('m/d/Y');
+        }
+    }
+
+    public function getCheckOutAttr()
+    {
+        if($this->attributes['check_out']) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['check_out'])->format('m/d/Y');
+        } else {
+            return Carbon::today()->format('m/d/Y');
+        }
+    }
+    
     public function getBookingDateAttr()
     {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['booking_date'])->format('m/d/Y');
+        if($this->attributes['booking_date']) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['booking_date'])->format('m/d/Y');
+        } else {
+            return Carbon::today()->format('m/d/Y');
+        }
     }
+
 }
