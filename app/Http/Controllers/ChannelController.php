@@ -28,7 +28,7 @@ class ChannelController extends Controller
             'name' => $request->channelName,
         ]);
 
-        return redirect()->route('bookings.index');
+        return back()->with('status','Channel created Successfully');
     }
 
     public function show(Channel $channel)

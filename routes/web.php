@@ -29,3 +29,6 @@ Route::resource('/bookings', 'App\Http\Controllers\BookingController');
 
 // all channels
 Route::resource('/channels', 'App\Http\Controllers\ChannelController');
+
+// all rooms
+Route::resource('/rooms', 'App\Http\Controllers\RoomController');
