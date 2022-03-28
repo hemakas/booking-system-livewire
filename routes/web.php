@@ -32,3 +32,6 @@ Route::resource('/channels', 'App\Http\Controllers\ChannelController');
 
 // all rooms
 Route::resource('/rooms', 'App\Http\Controllers\RoomController');
+
+// all rate plans
+Route::resource('/rateplans', 'App\Http\Controllers\RatePlanController');
