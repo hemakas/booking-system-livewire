@@ -52,13 +52,15 @@ class BookingController extends Controller
             'contactEmail' => 'required',
         ]);
     
+        $booking = new Booking();
+
         Booking::create([
             'no_of_rooms' => $request->noOfRooms,
-            'check_in' => Booking::setDateAttr($request->checkIn),
-            'check_out' => Booking::setDateAttr($request->checkOut),
+            'check_in' => $booking->setDateAttr($request->checkIn),
+            'check_out' => $booking->setDateAttr($request->checkOut),
             'no_of_adults' => $request->noOfAdults,
             'no_of_children' => $request->noOfChildren,
-            'booking_date' => Booking::setDateAttr($request->bookingDate),
+            'booking_date' => $booking->setDateAttr($request->bookingDate),
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
             'contact_mobile' => $request->contactMobile,
