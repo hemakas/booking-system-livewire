@@ -26,3 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // all bookings
 Route::resource('/bookings', 'App\Http\Controllers\BookingController');
+
+// all channels
+Route::resource('/channels', 'App\Http\Controllers\ChannelController');
